@@ -65,6 +65,7 @@
     <input id="input_value" class="txt" placeholder="值"/>
     <button onclick="saveCookie()">存储cookie</button>
     <button onclick="getCookie()">获取cookie</button>
+    <button onclick="delCookie()">删除cookie</button>
     <div id="cookieTxt" class="txt"></div>
 </div>
 
@@ -153,8 +154,12 @@
 
     function getCookie() {
         var str = document.getElementById('input_cookie').value;
-
         document.getElementById('cookieTxt').innerHTML = osUtil.getCookie(str);
+    }
+
+    function delCookie() {
+        var str = document.getElementById('input_cookie').value;
+        osUtil.delCookie(str);
     }
 
 </script>

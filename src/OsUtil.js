@@ -91,11 +91,23 @@ export default class OsUtil {
     }
 
     /**
+     * 删除cookie
+     * @param name [string] 要删除的cookie名称
+     */
+    delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = getCookie(name);
+        if (cval != null)
+            document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+
+    /**
      * 获取URL中的参数
      * @param name [string] 参数名称
      * @returns {*}
      */
-    getQueryString(name){
+    getQueryString(name) {
         var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
         var r = window.location.search.substr(1).match(reg);
         if (r != null) {
