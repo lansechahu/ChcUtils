@@ -21,10 +21,10 @@ export default class FormUtil {
     /**
      * 判断是否为手机号码
      * @param str [string] 手机号字符串
-     * @returns {boolean} 返回true是手机号，false不是手机号
+     * @returns {boolean} 返回true是手机号，false不是手机号，忽略前后空格
      */
     isPhone(str) {
-        str = stringUtil.trim(str, 1);
+        str = stringUtil.trim(str, 2);
         var p = /^0*(13|14|15|16|17|18)\d{9}$/;
         return p.test(str);
     }
@@ -32,10 +32,54 @@ export default class FormUtil {
     /**
      * 判断是否为email
      * @param str [string] 要处理的字符串
-     * @returns {boolean} 返回true是邮箱，false不是邮箱
+     * @returns {boolean} 返回true是邮箱，false不是邮箱，忽略前后空格
      */
-    isEmail(str){
+    isEmail(str) {
+        str = stringUtil.trim(str, 2);
         let myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
         return myreg.test(str);
+    }
+
+    /**
+     * 判断身份证号
+     * @param str [string] 身份证号
+     * @returns {boolean} 返回true是身份证号，false不是身份证号，忽略前后空格
+     */
+    isID(str) {
+        str = stringUtil.trim(str, 2);
+        let myreg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        return myreg.test(str);
+    }
+
+    /**
+     * 判断表单必要项是否完整
+     * @param __arr [array] 表单项数组，每个数组元素是一个object
+     * object的内容：{value:string,type:1}
+     *              value [string]:要判断的值
+     *              type [nubmer]:判断类型， 1-判断字符串是否为空   2-判断手机号   3-判断邮箱   4-判断身份证号
+     */
+    judgeForm(__arr) {
+
+        for (let i = 0; i < __arr.length; i++) {
+            let str = __arr[i].value;
+            let type = __arr[i].type;
+
+            switch (type) {
+                case 1:
+                    __arr[i].judge = this.inputEmpty(str);
+                    break;
+                case 2:
+                    __arr[i].judge = this.isPhone(str);
+                    break;
+                case 3:
+                    __arr[i].judge = this.isEmail(str);
+                    break;
+                case 4:
+                    __arr[i].judge = this.isID(str);
+                    break;
+            }
+        }
+
+        return __arr;
     }
 }

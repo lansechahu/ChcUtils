@@ -49,6 +49,13 @@
     <input id="input_txt2" class="txt"/>
 </div>
 
+<button onclick="subForm()">判断表单项</button>
+
+<div class="row">
+    <button onclick="ispc()">判断是否是pc端</button>
+    <div id="pcTxt" class="txt"></div>
+</div>
+
 <div id="ball"></div>
 
 
@@ -57,6 +64,7 @@
     var stringUtil = new ChcUtil.StringUtil();
     var arrayUtil = new ChcUtil.ArrayUtil();
     var formUtil = new ChcUtil.FormUtil();
+    var osUtil = new ChcUtil.OsUtil();
 
     function getMath() {
         var dis = mathUtil.getDistance({x: 10, y: 10}, {x: 100, y: 200});
@@ -97,6 +105,27 @@
         var __isEmpty = formUtil.inputEmpty(str) ? formUtil.inputEmpty(str) + " 非空的" : formUtil.inputEmpty(str) + " 是空的";
 
         alert(__isEmpty);
+    }
+
+    function subForm() {
+        var arr = [];
+
+        var obj1 = {value: '姓  名', type: 1};
+        var obj2 = {value: '182015  91880', type: 2};
+        var obj3 = {value: 'aaa@126.com', type: 3};
+        var obj4 = {value: '120102155585858585', type: 4};
+        var obj5 = {value: '职位', type: 1};
+        arr = [
+            obj1, obj2, obj3, obj4, obj5
+        ];
+
+        var __arr = formUtil.judgeForm(arr);
+        console.log(__arr);
+    }
+
+    function ispc() {
+        let pp = osUtil.isPc();
+        document.getElementById('pcTxt').innerHTML = pp;
     }
 </script>
 </body>
