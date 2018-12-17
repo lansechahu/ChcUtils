@@ -57,6 +57,8 @@ export default class FormUtil {
      * object的内容：{value:string,type:1}
      *              value [string]:要判断的值
      *              type [nubmer]:判断类型， 1-判断字符串是否为空   2-判断手机号   3-判断邮箱   4-判断身份证号
+     *
+     *  return [array] 返回一个数组，数组元素与源数组一样，多了一个属性judge，为true时是通过，为false时是有问题
      */
     judgeForm(__arr) {
 
