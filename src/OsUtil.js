@@ -89,4 +89,18 @@ export default class OsUtil {
         }
         return unescape(dc.substring(begin + prefix.length, end));
     }
+
+    /**
+     * 获取URL中的参数
+     * @param name [string] 参数名称
+     * @returns {*}
+     */
+    getQueryString(name){
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
 }
