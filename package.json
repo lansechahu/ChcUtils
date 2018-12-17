@@ -1,5 +1,5 @@
 {
-  "name": "ChcUtil",
+  "name": "ChcUtils",
   "version": "1.0.0",
   "author": "",
   "description": "ES6 library tool",
@@ -16,6 +16,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "chc-npm-test": "^1.0.0",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
   },

@@ -7,7 +7,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: __dirname + "/build",
-        filename: 'ChcUtil.min.js',
+        filename: 'ChcUtils.min.js',
         libraryTarget: "umd",
         umdNamedDefine: true,
     },
