@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <script src="build/ChcUtil.min.js"></script>
+
+    <style>
+        .row {
+            display: flex;
+        }
+
+        .txt {
+            margin-left: 20px;
+        }
+
+        #ball {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            top: 100px;
+            left: 100px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="row">
+    <button onclick="getMath()">MathUtil</button>
+    <div id="mathTxt" class="txt"></div>
+</div>
+
+<button onclick="ballmove()">画圆</button>
+
+<div class="row">
+    <button onclick="isEmpty()">判断是否为空字符</button>
+    <input id="input_txt" class="txt"/>
+</div>
+
+<div class="row">
+    <button onclick="getArr()">打乱数组</button>
+    <input id="input_num" class="txt"/>
+    <div id="arrTxt" class="txt"></div>
+</div>
+
+<div class="row">
+    <button onclick="inputEmpty()">判断输入框是否为空字符</button>
+    <input id="input_txt2" class="txt"/>
+</div>
+
+<div id="ball"></div>
+
+
+<script>
+    var mathUtil = new ChcUtil.MathUtil();
+    var stringUtil = new ChcUtil.StringUtil();
+    var arrayUtil = new ChcUtil.ArrayUtil();
+    var formUtil = new ChcUtil.FormUtil();
+
+    function getMath() {
+        var dis = mathUtil.getDistance({x: 10, y: 10}, {x: 100, y: 200});
+        document.getElementById('mathTxt').innerHTML = dis;
+
+        var str = mathUtil.getData('d2');
+        console.log(str);
+    }
+
+    function ballmove() {
+        var angle = 0;
+
+        setInterval(function () {
+            var pos = mathUtil.getCirclePosition(angle, {x: 200, y: 100}, {x: 200, y: 200});
+            var ball = document.getElementById('ball');
+            ball.style.top = pos.y + 'px';
+            ball.style.left = pos.x + 'px';
+            angle++;
+        }, 10);
+    }
+
+    function isEmpty() {
+        var str = document.getElementById('input_txt').value;
+        var __isEmpty = stringUtil.isEmpty(str) ? stringUtil.isEmpty(str) + " 是空的" : stringUtil.isEmpty(str) + " 非空的";
+
+        alert(__isEmpty);
+    }
+
+    function getArr() {
+        var str = document.getElementById('input_num').value;
+        var arr = str.split(',');
+        var arr2 = arrayUtil.shuffle(arr);
+        document.getElementById('arrTxt').innerHTML = arr2;
+    }
+
+    function inputEmpty() {
+        var str = document.getElementById('input_txt2').value;
+        var __isEmpty = formUtil.inputEmpty(str) ? formUtil.inputEmpty(str) + " 非空的" : formUtil.inputEmpty(str) + " 是空的";
+
+        alert(__isEmpty);
+    }
+</script>
+</body>
+</html>
