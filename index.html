@@ -148,42 +148,15 @@
     function saveCookie() {
         var str = document.getElementById('input_cookie').value;
         var value = document.getElementById('input_value').value;
-        var username = 'joe';
-        document.cookie = "name=" + username;
-        //setCookie('chu', '123', 30);
+        osUtil.setCookie(str, value);
     }
 
     function getCookie() {
         var str = document.getElementById('input_cookie').value;
-        console.log(document.cookie.match('name'));
-        document.getElementById('cookieTxt').innerHTML = document.cookie.match('name');
+
+        document.getElementById('cookieTxt').innerHTML = osUtil.getCookie(str);
     }
 
-    /*function setCookie(c_name, value, expiredays) {
-        var exdate = new Date();
-        exdate.setDate(exdate.getDate() + expiredays);
-        document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
-    }
-
-    function getCookie(name) {
-        let dc = document.cookie;
-        let prefix = name + "=";
-        let begin = dc.indexOf("; " + prefix);
-        console.log(begin);
-        if (begin == -1) {
-            begin = dc.indexOf(prefix);
-            if (begin != 0) return null;
-        }
-        else {
-            begin += 2;
-        }
-        let end = document.cookie.indexOf(";", begin);
-        if (end == -1) {
-            end = dc.length;
-        }
-
-        return unescape(dc.substring(begin + prefix.length, end));
-    }*/
 </script>
 </body>
 </html>
