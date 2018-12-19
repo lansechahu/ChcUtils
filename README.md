@@ -27,7 +27,16 @@ console.log(dis);
      * @param {object} [__center] 要获取位置的圆的中心点，默认为{x:0,y:0}
      * @returns {object} 生成的坐标
 
+
 * **getDistance(p1, p2)**<br>
      * 计算两点间距离
      * @param {object} [p1] 点1
      * @param {object} [p2] 点2
+
+
+* **getOnLineXY(p1, p2, _x, _y)**<br>
+     * 计算两点间直线任意点的坐标，p1 p2为直线的两个端点，_x和_y为要求的坐标点中的一个坐标，求另一个
+     * @param {object} [p1] 点1
+     * @param {object} [p2] 点2
+     * @param {number} [_x] 要求的点的x坐标，求x坐标的话，该参数填null
+     * @param {number} [_y] 要求的点的y坐标，求x坐标的话，该参数填null
