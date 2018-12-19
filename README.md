@@ -4,5 +4,5 @@
 ### NPM Install
 `<npm install --save-dev chcutils>`
 
-ES6导入
+ES6导入<br>
 `<import * as Chcutils from 'chcutils';>`
