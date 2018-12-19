@@ -134,8 +134,8 @@ console.log(dis);
      * @param sn [number] 要插入的位置
      * @returns {string}
      * 例：
-     *     var aa = 'abcd';
-     *     stringUtil.insert_flg(aa, '123', 2); //ab123cd
+     ```var aa = 'abcd';
+        stringUtil.insert_flg(aa, '123', 2); //ab123cd```
 <br>
 
 * **del_flg(str, sn, len)**<br>
@@ -183,8 +183,8 @@ console.log(dis);
      * @param splitType [string] 单词之间的间隔符号，可不填
      * @returns {{el: string, max: number}} el-最长的单词  max-最长单词的长度
      * 例：
-     *     longestWord('Find the Longest word in a String'); {el:'Longest',max:7}
-     *     longestWord('Find|the|Longest|word|in|a|String','|'); {el:'Longest',max:7}
+     ```longestWord('Find the Longest word in a String'); {el:'Longest',max:7}
+        longestWord('Find|the|Longest|word|in|a|String','|'); {el:'Longest',max:7}```
 <br>
 
 * **titleCaseUp(str, splitType)**<br>
@@ -205,6 +205,6 @@ console.log(dis);
      * @param date [date] 要处理的日期
      * @returns {string}
      * 例：
-     *     var mydate = new Date();
-     *     var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25
+     ```var mydate = new Date();
+        var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25```
 <br>
