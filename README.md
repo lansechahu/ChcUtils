@@ -11,3 +11,8 @@ ES6导入<br>
 `<script src="*/ChcUtils.min.js"></script>`
 
 ## [Demo](https://lansechahu.github.io/ChcUtils/)
+`
+var mathutil = new Chcutils.MathUtil();
+var dis = mathutil.getDistance({x: 10, y: 10}, {x: 100, y: 100});
+console.log(dis);
+`
