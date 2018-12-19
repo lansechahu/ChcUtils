@@ -122,10 +122,9 @@ console.log(dis);
 <br>
 
 * **isEmpty(str)**<br>
-     * 去除空格
-     * @param str [string] 要处理的字符串
-     * @param type [number] 怎么处理，1-所有空格 2-前后空格 3-前空格 4-后空格
-     * @returns {string}
+     * 判断是否为空字符
+     * @param str [string] 要判断的字符串
+     * @returns {boolean} 返回true是空的，false是非空的
 <br>
 
 * **insert_flg(str, flg, sn)**<br>
