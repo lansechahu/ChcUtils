@@ -112,3 +112,96 @@ console.log(dis);
      * 例：getMoneyCapital(1682);  //"人民币壹仟陆佰捌拾贰元整"
      * 例：getMoneyCapital(-1693); //"欠人民币壹仟陆佰玖拾叁元整"
 <br>
+
+### * StringUtil
+* **trim(str, type)**<br>
+      * 去除空格
+      * @param str [string] 要处理的字符串
+      * @param type [number] 怎么处理，1-所有空格 2-前后空格 3-前空格 4-后空格
+      * @returns {string}
+<br>
+
+* **isEmpty(str)**<br>
+      * 判断是否为空字符
+      * @param str [string] 要判断的字符串
+      * @returns {boolean} 返回true是空的，false是非空的
+<br>
+
+* **insert_flg(str, flg, sn)**<br>
+       * 在指定地方插入字符
+       * @param str [string] 要处理的字符串
+       * @param flg [string] 要插入的字符串
+       * @param sn [number] 要插入的位置
+       * @returns {string}
+       * 例：var aa = 'abcd';
+       *     stringUtil.insert_flg(aa, '123', 2); //ab123cd
+<br>
+
+* **del_flg(str, sn, len)**<br>
+        * 删除指定地方的字符
+        * @param str [string] 要处理的字符串
+        * @param sn [number] 要删除的位置，从1开始
+        * @param len [number] 删除字符串的长度，默认为1
+        * @returns {string}
+<br>
+
+* **randomString(len)**<br>
+        * 随机A-Z|a-z|0-9 中的随机组合
+        * @param len {number} 随机组合的长度
+        * @returns {string}
+<br>
+
+* **strReplace(str, a, b, mm)**<br>
+        * 将字符串中的指定字符替换成另一个字符
+        * @param str [string] 要处理的字符串
+        * @param a [string] 要替换的字符串
+        * @param b [string] 要替换成的字符串
+        * @param mm [string] 匹配模式：g-全局匹配  i-区分大小写  m-多行匹配
+        * @returns {string}
+<br>
+
+* **changeCase(str, type)**<br>
+        * 字母大小写转换
+        * @param str [string] 要处理的字符串
+        * @param type [number] 转换类型： 1-首字母大写  2-首字母小写  3-大小写转换  4-全部大写  5-全部小写
+        * @returns {*}
+<br>
+
+* **encryptStr(str, regArr, type, ARepText)**<br>
+        * 字符替换*
+        * @param str [string] 要处理的字符串
+        * @param regArr [array] 字符格式，例：[3,5,3] 生成的字符就是***12345***
+        * @param type [number] 替换方式  0-替换中间N个或前面N个字符  1-替换两边N个或后面N个字符
+        * @param ARepText [string] 替换的字符，默认是*
+        * @returns {string}
+<br>
+
+* **longestWord(str, splitType)**<br>
+        * 找出最长单词
+        * @param str [string] 要处理的字符串
+        * @param splitType [string] 单词之间的间隔符号，可不填
+        * @returns {{el: string, max: number}} el-最长的单词  max-最长单词的长度
+        * 例：longestWord('Find the Longest word in a String'); {el:'Longest',max:7}
+        *     longestWord('Find|the|Longest|word|in|a|String','|'); {el:'Longest',max:7}
+<br>
+
+* **titleCaseUp(str, splitType)**<br>
+        * 句中单词首字母大写
+        * @param str [string] 要处理的字符串
+        * @param splitType [string] 单词之间的间隔符号，可不填
+        * @returns {string}
+<br>
+
+* **formatNumber(n)**<br>
+        * 给数字前面加0
+        * @param n [number] 要处理的数字，如果小于10，则前面加0
+        * @returns {string}
+<br>
+
+* **formatTime(date)**<br>
+        * 获取格式化的日期
+        * @param date [date] 要处理的日期
+        * @returns {string}
+        * 例：var mydate = new Date();
+        *     var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25
+<br>
