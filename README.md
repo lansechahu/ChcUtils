@@ -26,3 +26,8 @@ console.log(dis);
      * @param {object} [__radius] 要获取位置的圆的半径，{x:xx,y:yy}，两个值不一样的时候就是画椭圆
      * @param {object} [__center] 要获取位置的圆的中心点，默认为{x:0,y:0}
      * @returns {object} 生成的坐标
+
+* **getDistance(p1, p2)**<br>
+     * 计算两点间距离
+     * @param {object} [p1] 点1
+     * @param {object} [p2] 点2
