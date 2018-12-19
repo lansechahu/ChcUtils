@@ -114,11 +114,11 @@ console.log(dis);
 <br>
 
 ### * StringUtil
-* **getMoneyCapital(n)**<br>
-     * 获取金额中文大写
-     * @param {number} [n] 金额数字
-     * 例：getMoneyCapital(1682);  //"人民币壹仟陆佰捌拾贰元整"
-     * 例：getMoneyCapital(-1693); //"欠人民币壹仟陆佰玖拾叁元整"
+* **trim(str, type)**<br>
+     * 去除空格
+          * @param str [string] 要处理的字符串
+          * @param type [number] 怎么处理，1-所有空格 2-前后空格 3-前空格 4-后空格
+          * @returns {string}
 <br>
 
 * **isEmpty(str)**<br>
