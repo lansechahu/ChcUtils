@@ -128,13 +128,13 @@ console.log(dis);
 <br>
 
 * **insert_flg(str, flg, sn)**<br>
-       * 在指定地方插入字符
-       * @param str [string] 要处理的字符串
-       * @param flg [string] 要插入的字符串
-       * @param sn [number] 要插入的位置
-       * @returns {string}
-       * 例：var aa = 'abcd';
-       *     stringUtil.insert_flg(aa, '123', 2); //ab123cd
+     * 在指定地方插入字符
+     * @param str [string] 要处理的字符串
+     * @param flg [string] 要插入的字符串
+     * @param sn [number] 要插入的位置
+     * @returns {string}
+     * 例：var aa = 'abcd';
+     *     stringUtil.insert_flg(aa, '123', 2); //ab123cd
 <br>
 
 * **del_flg(str, sn, len)**<br>
