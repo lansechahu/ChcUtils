@@ -123,8 +123,6 @@ console.log(dis);
 
 * **isEmpty(str)**<br>
       * 判断是否为空字符
-      * @param str [string] 要判断的字符串
-      * @returns {boolean} 返回true是空的，false是非空的
 <br>
 
 * **insert_flg(str, flg, sn)**<br>
