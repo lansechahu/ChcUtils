@@ -341,3 +341,39 @@ console.log(dis);
      *
      *  return [array] 返回一个数组，数组元素与源数组一样，多了一个属性judge，为true时是通过，为false时是有问题
 <br>
+
+### * OsUtil
+
+* **isPc()**<br>
+     * 判断是否是pc端
+     * @returns {boolean}
+<br>
+
+* **getSysInfo()**<br>
+     * 获取终端设备信息
+     * return {object} 返回一个对象，对象属性是设备的类型
+<br>
+
+* **setCookie(c_name, value, expiredays)**<br>
+     * 存储cookie
+     * @param c_name [string] 存储的名称
+     * @param value [string] 存储的值
+     * @param expiredays [number] 存储的时限（天）
+<br>
+
+* **getCookie(name)**<br>
+     * 获取cookie存储的数据
+     * @param name [string] 存储的名称
+     * @returns {*} 有值的话返回值，没值的话返回null
+<br>
+
+* **delCookie(name)**<br>
+     * 删除cookie
+     * @param name [string] 要删除的cookie名称
+<br>
+
+* **getQueryString(name)**<br>
+     * 获取URL中的参数
+     * @param name [string] 参数名称
+     * @returns {*}
+<br>
