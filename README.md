@@ -115,10 +115,11 @@ console.log(dis);
 
 ### * StringUtil
 * **trim(str, type)**<br>
-      * 去除空格
-      * @param str [string] 要处理的字符串
-      * @param type [number] 怎么处理，1-所有空格 2-前后空格 3-前空格 4-后空格
-      * @returns {string}
+        * 计算圆上一点的坐标，可做成画圆效果
+        * @param {number} [__angle] 要获取位置的角度
+        * @param {object} [__radius] 要获取位置的圆的半径，{x:xx,y:yy}，两个值不一样的时候就是画椭圆
+        * @param {object} [__center] 要获取位置的圆的中心点，默认为{x:0,y:0}
+        * @returns {object} 生成的坐标
 <br>
 
 * **isEmpty(str)**<br>
