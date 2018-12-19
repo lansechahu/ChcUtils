@@ -205,6 +205,8 @@ console.log(dis);
      * @param date [date] 要处理的日期
      * @returns {string}
      * 例：
-     ```var mydate = new Date();
-        var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25```
+     ```
+     var mydate = new Date();
+     var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25
+     ```
 <br>
