@@ -12,7 +12,7 @@ ES6导入<br>
 
 ## [Demo](https://lansechahu.github.io/ChcUtils/)
 `
-var mathutil = new Chcutils.MathUtil();
-var dis = mathutil.getDistance({x: 10, y: 10}, {x: 100, y: 100});
+var mathutil = new Chcutils.MathUtil();<br>
+var dis = mathutil.getDistance({x: 10, y: 10}, {x: 100, y: 100});<br>
 console.log(dis);
 `
