@@ -5,17 +5,23 @@
 `npm install --save-dev chcutils`
 
 ES6导入<br>
-`import * as Chcutils from 'chcutils';`
-
-#### 直接引入
-`<script src="*/ChcUtils.min.js"></script>`
-
-## [Demo](https://lansechahu.github.io/ChcUtils/)
+`import * as ChcUtils from 'chcutils';`
 ```
-var mathutil = new Chcutils.MathUtil();
+var mathutil = new ChcUtils.MathUtil();
 var dis = mathutil.getDistance({x: 10, y: 10}, {x: 100, y: 100});
 console.log(dis);
 ```
+
+#### 直接引入
+`<script src="*/ChcUtils.min.js"></script>`
+```
+var mathutil = new ChcUtils.MathUtil();
+var dis = mathutil.getDistance({x: 10, y: 10}, {x: 100, y: 100});
+console.log(dis);
+```
+
+## [Demo](https://lansechahu.github.io/ChcUtils/)
+
 
 ## 函数
 
