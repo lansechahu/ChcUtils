@@ -207,17 +207,34 @@ console.log(dis);
 * **formatNumber(n)**<br>
      * 给数字前面加0
      * @param n [number] 要处理的数字，如果小于10，则前面加0
+     * @param __num [number] 在第几位补0，2：是十位，3：是百位
      * @returns {string}
 <br>
 
 * **formatTime(date)**<br>
      * 获取格式化的日期
      * @param date [date] 要处理的日期
+     * @param __icon [string] 日期分隔符，如：/ -
      * @returns {string}
      * 例：
      ```
      var mydate = new Date();
      var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25
+     ```
+<br>
+
+* **getTimeDis(thisTime, targetTime, __showDay, __hours_num, __day_num)**<br>
+     * 返回两个时间点的时间差
+     * @param thisTime [string] 当前日期  格式：2019-04-01 00:00:00
+     * @param targetTime [string] 目标日期 格式：2019-04-01 00:00:00
+     * @param __showDay [boolean] 是否显示天数 默认false
+     * @param __hours_num [number] 小时部分显示几位数
+     * @param __day_num [number] 天数部分显示几位数
+     * @returns {string}
+     * 例：
+     ```
+     var test = stringUtil.getTimeDis("2019-04-01 04:00:50", "2019-04-05 04:01:00",true,3,3);
+     console.log('disTime:' + test);  //disTime:004:00:00:010
      ```
 <br>
 

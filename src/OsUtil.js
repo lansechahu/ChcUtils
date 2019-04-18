@@ -115,4 +115,18 @@ export default class OsUtil {
         }
         return null;
     }
+
+    /**
+     * 深复制一个对象，生成一个新的对象
+     * @param obj [object] 要复制的对象
+     * @returns {*}
+     */
+    cloneObj(obj) {
+        var obj2 = Object.create(
+            Object.getPrototypeOf(obj),
+            Object.getOwnPropertyDescriptors(obj)
+        );
+
+        return obj2;
+    }
 }

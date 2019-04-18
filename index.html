@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Demo</title>
-    <script src="build/ChcUtil.min.js"></script>
+    <script src="build/ChcUtils.min.js"></script>
 
     <style>
         .row {
@@ -70,6 +70,14 @@
 </div>
 
 <div id="ball"></div>
+
+<div class="row">
+    <button onclick="clone()">复制对象</button>
+</div>
+
+<div class="row">
+    <button onclick="getTime()">时间差</button>
+</div>
 
 
 <script>
@@ -160,6 +168,27 @@
     function delCookie() {
         var str = document.getElementById('input_cookie').value;
         osUtil.delCookie(str);
+    }
+
+    function clone() {
+        var obj = {a: 11, b: 22};
+        var obj2 = osUtil.cloneObj(obj);
+        obj2.a = 23;
+
+        console.log(obj);
+        console.log(obj2);
+    }
+
+    function getTime() {
+        var data = {
+            "thisTime": "2019-04-01 04:00:50",
+            "targetTime": "2019-04-05 04:01:00"
+        };
+
+        var test = stringUtil.getTimeDis(data.thisTime, data.targetTime,true,3,3);
+        console.log('thisTime:' + data.thisTime);
+        console.log('targetTime:' + data.targetTime);
+        console.log('disTime:' + test);
     }
 
 </script>

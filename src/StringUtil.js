@@ -225,21 +225,33 @@ export default class StringUtil {
     /**
      * 给数字前面加0
      * @param n [number] 要处理的数字，如果小于10，则前面加0
+     * @param __num [number] 在第几位补0，2：是十位，3：是百位
      * @returns {string}
      */
-    formatNumber(n) {
-        n = n.toString()
-        return n[1] ? n : '0' + n;
+    formatNumber(n, __num) {
+        var num = (__num < 2 || !__num) ? 2 : __num;
+        n = n.toString();
+        for (var i = 0; i < num; i++) {
+            if (n[i]) {
+                n = n;
+            } else {
+                n = '0' + n;
+            }
+        }
+        return n;
+        //return n[1] ? n : '0' + n;
     }
 
     /**
      * 获取格式化的日期
      * @param date [date] 要处理的日期
+     * @param __icon [string] 日期分隔符，如：/ -
      * @returns {string}
      * 例：var mydate = new Date();
      *     var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25
      */
-    formatTime(date) {
+    formatTime(date, __icon) {
+        const icon = __icon || "/";
         const year = date.getFullYear()
         const month = date.getMonth() + 1
         const day = date.getDate()
@@ -247,6 +259,76 @@ export default class StringUtil {
         const minute = date.getMinutes()
         const second = date.getSeconds()
 
-        return [year, month, day].map(this.formatNumber).join('/') + ' ' + [hour, minute, second].map(this.formatNumber).join(':')
+        return [year, month, day].map(this.formatNumber).join(icon) + ' ' + [hour, minute, second].map(this.formatNumber).join(':')
+    }
+
+    /**
+     * 返回两个时间点的时间差
+     * @param thisTime [string] 当前日期  格式：2019-04-01 00:00:00
+     * @param targetTime [string] 目标日期 格式：2019-04-01 00:00:00
+     * @param __showDay [boolean] 是否显示天数 默认false
+     * @param __hours_num [number] 小时部分显示几位数
+     * @param __day_num [number] 天数部分显示几位数
+     * @returns {string}
+     * 例：
+     *      var test = stringUtil.getTimeDis("2019-04-01 04:00:50", "2019-04-05 04:01:00",true,3,3);
+     *      console.log('disTime:' + test);  //disTime:004:00:00:010
+     */
+    getTimeDis(thisTime, targetTime, __showDay, __hours_num, __day_num) {
+        let showDay = __showDay || false;
+        let hours_num = (__hours_num < 2 || !__hours_num) ? 2 : __hours_num;
+        if (showDay == true) hours_num = 2;
+        let day_num = (__day_num < 2 || !__day_num) ? 2 : __day_num;
+        let aa = this.strReplace(thisTime, '-', ',');
+        aa = this.strReplace(aa, ':', ',');
+        aa = this.strReplace(aa, ' ', ',');
+        aa = aa.split(',');
+
+        let bb = this.strReplace(targetTime, '-', ',');
+        bb = this.strReplace(bb, ':', ',');
+        bb = this.strReplace(bb, ' ', ',');
+        bb = bb.split(',');
+
+        let thisDate = new Date(parseInt(aa[0]), parseInt(aa[1]) - 1, parseInt(aa[2]), parseInt(aa[3]), parseInt(aa[4]), parseInt(aa[5]));
+        let targetDate = new Date(parseInt(bb[0]), parseInt(bb[1]) - 1, parseInt(bb[2]), parseInt(bb[3]), parseInt(bb[4]), parseInt(bb[5]));
+        let timeDis = Date.parse(targetDate) - Date.parse(thisDate);
+
+        let days = parseInt(timeDis / (1000 * 60 * 60 * 24));
+        let hours;
+        if (showDay == true) {
+            hours = parseInt((timeDis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        } else {
+            hours = parseInt((timeDis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + days * 24;
+        }
+
+        let daysStr = days.toString();
+
+        for (var i = 0; i < day_num; i++) {
+            if (daysStr[i]) {
+                daysStr = daysStr;
+            } else {
+                daysStr = '0' + daysStr;
+            }
+        }
+
+        let hoursStr = hours.toString();
+        for (var i = 0; i < hours_num; i++) {
+            if (hoursStr[i]) {
+                hoursStr = hoursStr;
+            } else {
+                hoursStr = '0' + hoursStr;
+            }
+        }
+        let minutes = parseInt((timeDis % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = (timeDis % (1000 * 60)) / 1000;
+
+        let str = '';
+        if (showDay == true) {
+            str = [daysStr, hoursStr, minutes, seconds].map(this.formatNumber).join(':');
+        } else {
+            str = [hoursStr, minutes, seconds].map(this.formatNumber).join(':');
+        }
+
+        return str;
     }
 }
