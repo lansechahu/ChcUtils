@@ -25,7 +25,7 @@ export default class FormUtil {
      */
     isPhone(str) {
         str = stringUtil.trim(str, 2);
-        var p = /^0*(13|14|15|16|17|18)\d{9}$/;
+        var p = /^0*(10|11|12|13|14|15|16|17|18)\d{9}$/;
         return p.test(str);
     }
 
