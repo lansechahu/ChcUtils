@@ -31,13 +31,27 @@ export default class ArrayUtil {
         if (__num === 0 || !__num) {
             return __arr;
         }
-        let arr = __arr.shuffle();
+        let arr = this.shuffle(__arr);
         let arr2 = [];
         for (let i = 0; i < __num; i++) {
             arr2.push(arr[i]);
         }
 
         return arr2;
+    }
+
+    /**
+     * 把传过来的数字从0开始转成数组，如：100，数组就是[0,1,2,...,99];
+     * @param __num [number] 要处理的数
+     * @returns [array] 生成的新数组
+     */
+    getNumArr(__num) {
+        let arr = [];
+        for (let i = 0; i < __num; i++) {
+            arr.push(i);
+        }
+
+        return arr;
     }
 
     /**

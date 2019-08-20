@@ -253,6 +253,12 @@ console.log(dis);
      * @returns [array] 生成的新数组
 <br>
 
+* **getNumArr(__num)**<br>
+     * 把传过来的数字从0开始转成数组，如：100，数组就是[0,1,2,...,99];
+     * @param __num [number] 要处理的数
+     * @returns [array] 生成的新数组
+<br>
+
 * **removeRepeatArray(arr)**<br>
      * 数组去重
      * @param arr [array] 要处理的数组
