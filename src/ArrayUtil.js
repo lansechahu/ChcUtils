@@ -22,6 +22,17 @@ export default class ArrayUtil {
     }
 
     /**
+     * 克隆出一个独立的数组
+     * @param __arr [array] 要处理的数组
+     * @returns [array] 生成的新数组
+     */
+    clone(__arr) {
+        var arr2=Array.from(__arr);
+
+        return arr2;
+    }
+
+    /**
      * 随机抓取N个元素生成新数组，如果__num为0或不填，则返回原数组
      * @param __arr [array] 要处理的数组
      * @param __num [number] 抓取多少元素

@@ -246,6 +246,12 @@ console.log(dis);
      * @returns [array] 打乱的数组
 <br>
 
+* **clone(__arr)**<br>
+     * 克隆出一个独立的数组
+     * @param __arr [array] 要处理的数组
+     * @returns [array] 生成的新数组
+<br>
+
 * **getExt(__arr, __num)**<br>
      * 随机抓取N个元素生成新数组，如果__num为0或不填，则返回原数组
      * @param __arr [array] 要处理的数组
