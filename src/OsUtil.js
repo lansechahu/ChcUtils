@@ -1,8 +1,83 @@
 /*
 * 系统相关
 * */
+import QRCode from 'qrcode';
 
 export default class OsUtil {
+    /**
+     * 判断是否是pc端，并且在pc端显示二维码提示移动端扫码观看
+     * __url  {string} 要转成二维码的地址，如果没有就取当前页面地址
+     * __tip  {string} 提示文字
+     * __options {object} 提示页面的样式和结构，style:样式，wrapper:html代码
+     */
+    pcQRCode(__url, __tip, __options) {
+        let that = this;
+        let tip = __tip || '请使用手机微信打开页面';
+        let options = __options || {};
+        if (!options.style) {
+            options.style = '\
+                #qcodeWrapper {\
+                    width: 100%;\
+                    height: 100%;\
+                    display: flex;\
+                    position: fixed;\
+                    top: 0;\
+                    left: 0;\
+                    z-index: 999;\
+                    background: black;\
+                    justify-content: center;\
+                    align-items: center;\
+                }\
+                #qcode {\
+                    text-align:center;\
+                    margin-bottom: 20px;\
+                }\
+                #qcode canvas{\
+                    width:100% ;\
+                    height:auto;\
+                }\
+                .box .tip {\
+                    font-size: 24px;\
+                    margin: 0 auto;\
+                    text-align: center;\
+                    color: white;\
+                }\
+            ';
+        }
+        if (!options.wrapper) {
+            options.wrapper = `\
+                <div class="box">\
+                    <div id="qcode"><canvas id="canvas"></canvas></div>\
+                    <div class="tip">${tip}</div>\
+                </div>\
+            `;
+        }
+        var style1 = document.createElement('style');
+        style1.innerHTML = options.style;
+        document.head.appendChild(style1);
+
+
+        var qcodeBox = document.createElement('div');
+        qcodeBox.id = 'qcodeWrapper';
+        qcodeBox.innerHTML = options.wrapper;
+        document.body.appendChild(qcodeBox);
+        qcodeBox.style.display = 'none';
+
+        var _url = __url || window.location.href;
+        QRCode.toCanvas(document.getElementById('canvas'), _url, {margin: 1, width: 300, height: 300});
+        setQcode();
+        window.addEventListener('resize', setQcode);
+
+        function setQcode() {
+            var isPc = that.isPc();
+            if (isPc) {
+                qcodeBox.style.display = 'flex';
+            } else {
+                qcodeBox.style.display = 'none';
+            }
+        }
+    }
+
     /**
      * 判断是否是pc端
      * @returns {boolean}

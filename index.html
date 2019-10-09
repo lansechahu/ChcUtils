@@ -87,6 +87,38 @@
     var formUtil = new ChcUtils.FormUtil();
     var osUtil = new ChcUtils.OsUtil();
 
+    var style1 = '\
+                #qcodeWrapper {\
+                    width: 100%;\
+                    height: 100%;\
+                    display: flex;\
+                    position: fixed;\
+                    top: 0;\
+                    left: 0;\
+                    z-index: 999;\
+                    background: red;\
+                    justify-content: center;\
+                    align-items: center;\
+                }\
+                #qcode {\
+                    text-align:center;\
+                    margin-bottom: 20px;\
+                }\
+                #qcode canvas{\
+                    width:100% ;\
+                    height:auto;\
+                }\
+                .box .tip {\
+                    font-size: 24px;\
+                    margin: 0 auto;\
+                    text-align: center;\
+                    color: white;\
+                }\
+            ';
+    var options = {style: style1};
+
+    osUtil.pcQRCode('http://10.145.90.1/audiNews', null, options);
+
     function getMath() {
         var dis = mathUtil.getDistance({x: 10, y: 10}, {x: 100, y: 200});
         document.getElementById('mathTxt').innerHTML = dis;
@@ -185,7 +217,7 @@
             "targetTime": "2019-04-05 04:01:00"
         };
 
-        var test = stringUtil.getTimeDis(data.thisTime, data.targetTime,true,3,3);
+        var test = stringUtil.getTimeDis(data.thisTime, data.targetTime, true, 3, 3);
         console.log('thisTime:' + data.thisTime);
         console.log('targetTime:' + data.targetTime);
         console.log('disTime:' + test);

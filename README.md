@@ -25,6 +25,16 @@ console.log(dis);
 
 ## 函数
 
+[MathUtil](#MathUtil)
+<br>
+[StringUtil](#StringUtil)
+<br>
+[ArrayUtil](#ArrayUtil)
+<br>
+[FormUtil](#FormUtil)
+<br>
+[OsUtil](#OsUtil)
+
 ### * **MathUtil**
 * **getCirclePosition(__angle, __radius, __center)**<br>
      * 计算圆上一点的坐标，可做成画圆效果
@@ -378,6 +388,13 @@ console.log(dis);
 <br>
 
 ### * OsUtil
+
+* **pcQRCode(__url, __tip)**<br>
+     * 判断是否是pc端，并且在pc端显示二维码提示移动端扫码观看
+     * @param __url [string] 要转成二维码的地址，如果没有就取当前页面地址
+     * @param __tip [string] 提示文字
+     * @param __options [object] 提示页面的样式和结构，style:样式，wrapper:html代码
+<br>
 
 * **isPc()**<br>
      * 判断是否是pc端
