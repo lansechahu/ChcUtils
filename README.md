@@ -25,15 +25,15 @@ console.log(dis);
 
 ## 函数
 
-[MathUtil](#MathUtil)
+[MathUtil](#-MathUtil)
 <br>
-[StringUtil](#StringUtil)
+[StringUtil](#-StringUtil)
 <br>
-[ArrayUtil](#ArrayUtil)
+[ArrayUtil](#-ArrayUtil)
 <br>
-[FormUtil](#FormUtil)
+[FormUtil](#-FormUtil)
 <br>
-[OsUtil](#OsUtil)
+[OsUtil](#-OsUtil)
 
 ### * **MathUtil**
 * **getCirclePosition(__angle, __radius, __center)**<br>
