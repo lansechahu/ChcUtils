@@ -2,6 +2,18 @@
 数学相关类
  */
 export default class MathUtil {
+	/**
+     * 判断是否是数字，是返回true，否返回false
+     * @param {string/Number...} [obj] 要被判断的对象
+     * @returns {Boolean} 是数字就返回true，不是数字就返回false
+     * */
+	isNumber(__obj) {
+	    var reg = /^[0-9]+.?[0-9]*$/;
+	    if (reg.test(__obj)) {
+	        return true;
+	    }
+	    return false;
+	}
     /**
      * 计算圆上一点的坐标，可做成画圆效果
      * @param {number} [__angle] 要获取位置的角度

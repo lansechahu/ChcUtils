@@ -34,8 +34,16 @@ console.log(dis);
 [FormUtil](#-FormUtil)
 <br>
 [OsUtil](#-OsUtil)
+<br>
+[ObjUtil](#-ObjUtil)
 
 ### * **MathUtil**
+* **isNumber(__obj)**<br>
+     * 判断是否是数字，是返回true，否返回false
+     * @param {string/Number...} [__obj] 要被判断的对象
+     * @returns {Boolean} 是数字就返回true，不是数字就返回false
+<br>
+
 * **getCirclePosition(__angle, __radius, __center)**<br>
      * 计算圆上一点的坐标，可做成画圆效果
      * @param {number} [__angle] 要获取位置的角度
@@ -428,4 +436,12 @@ console.log(dis);
      * 获取URL中的参数
      * @param name [string] 参数名称
      * @returns {*}
+<br>
+
+### * ObjUtil
+
+* **cloneObj(__obj)**<br>
+     * 深复制对象
+     * @param {Object} [__obj] 要被复制的对象
+     * @returns {Object} 返回复制出来的新对象
 <br>
