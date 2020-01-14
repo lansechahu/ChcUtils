@@ -257,27 +257,32 @@ export default class StringUtil {
 			}
 		}
 		return n;
-		//return n[1] ? n : '0' + n;
 	}
 
 	/**
 	 * 获取格式化的日期
+	 * @param fmt [string] 格式规范，如 "yyyy-MM-dd hh:mm"
 	 * @param date [date] 要处理的日期
-	 * @param __icon [string] 日期分隔符，如：/ -
 	 * @returns {string}
 	 * 例：var mydate = new Date();
-	 *     var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25
+	 *     var str = stringUtil.formatDate("yyyy-MM-dd hh:mm",mydate);  2018/12/14 17:45
 	 */
-	formatTime(date, __icon) {
-		const icon = __icon || "/";
-		const year = date.getFullYear()
-		const month = date.getMonth() + 1
-		const day = date.getDate()
-		const hour = date.getHours()
-		const minute = date.getMinutes()
-		const second = date.getSeconds()
-
-		return [year, month, day].map(this.formatNumber).join(icon) + ' ' + [hour, minute, second].map(this.formatNumber).join(':')
+	formatDate(fmt, date) {
+		var o = {
+        "M+": date.getMonth() + 1, //月份
+        "d+": date.getDate(), //日
+        "h+": date.getHours(), //小时
+        "m+": date.getMinutes(), //分
+        "s+": date.getSeconds(), //秒
+        "q+": Math.floor((date.getMonth() + 3) / 3), //季度
+        "S": date.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt))
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt))
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
 	}
 
 	/**
@@ -348,5 +353,81 @@ export default class StringUtil {
 		}
 
 		return str;
+	}
+	
+	/**
+	 * 判断字符串内是否包含另一个字符串的内容，无视顺序，有不包含的就返回false
+	 * @param _str1 [string] 源字符串
+	 * @param _str2 [string] 被寻找的字符串
+	 * @returns {Boolean}
+	 * 例：
+	 * 		var a='abcde';
+	 * 		var b='cde';
+	 * 		var c='cdh';
+	 * 		console.log(stringUtil.isContainStr(a,b)); //true
+	 * 		console.log(stringUtil.isContainStr(b,c)); //false
+	 */
+	isContainStr(_str1, _str2) {
+		var contain = true;
+    var _arr = _str2.split('');
+
+    for (var i = 0; i < _arr.length; i++) {
+        var a = _arr[i];
+        if (_str1.indexOf(a) == -1) {
+            contain = false;
+        }
+    }
+
+    return contain;
+	}
+	
+	/**
+	 * 带表情的字符串转码，转码后就可以无障碍的存入数据库了
+	 * @param str [string] 源字符串
+	 * @returns {String}
+	 */
+	utf16toEntities(str) {
+		var patt = /[\ud800-\udbff][\udc00-\udfff]/g;
+    // 检测utf16字符正则
+    str = str.replace(patt, function (char) {
+        var H, L, code;
+        if (char.length === 2) {
+            H = char.charCodeAt(0);
+            // 取出高位
+            L = char.charCodeAt(1);
+            // 取出低位
+            code = (H - 0xD800) * 0x400 + 0x10000 + L - 0xDC00;
+            // 转换算法
+            return "&#" + code + ";";
+        } else {
+            return char;
+        }
+    });
+    return str;
+	}
+	
+	/**
+	 * 带表情的字符串解码，从数据库取出字符串后解码后就可以正常显示的前端了
+	 * @param str [string] 源字符串
+	 * @returns {String}
+	 */
+	entitiestoUtf16(str) {
+		// 检测出形如&#12345;形式的字符串
+    var strObj = utf16toEntities(str);
+    var patt = /&#\d+;/g;
+    var H, L, code;
+    var arr = strObj.match(patt) || [];
+    for (var i = 0; i < arr.length; i++) {
+        code = arr[i];
+        code = code.replace('&#', '').replace(';', '');
+        // 高位
+        H = Math.floor((code - 0x10000) / 0x400) + 0xD800;
+        // 低位
+        L = (code - 0x10000) % 0x400 + 0xDC00;
+        code = "&#" + code + ";";
+        var s = String.fromCharCode(H, L);
+        strObj.replace(code, s);
+    }
+    return strObj;
 	}
 }

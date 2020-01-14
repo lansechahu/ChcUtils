@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi,width=750">
     <title>Demo</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="vconsole.min.js"></script>
     <script src="build/ChcUtils.min.js"></script>
 
     <style>
+    	body,html{
+    		width: 100%;
+    		height: 100%;
+    		overflow: hidden;
+    	}
         .row {
             display: flex;
         }
@@ -21,6 +29,19 @@
             top: 100px;
             left: 100px;
             background: #000;
+        }
+        
+        .scroller,.scroller2{
+        	width: 100%;
+        	height: 200px;
+        	overflow: hidden;
+        	overflow-y: scroll;
+        }
+        
+        .box{
+        	width: 100%;
+        	height: auto;
+        	background: yellow;
         }
     </style>
 </head>
@@ -79,6 +100,72 @@
     <button onclick="getTime()">时间差</button>
 </div>
 
+<div class="scroller myScroller">
+	<div class="box">
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+	</div>
+</div>
+
+<div class="scroller2 myScroller">
+	<div class="box">
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+		dfadfasdf<br />
+	</div>
+</div>
+
 
 <script>
     var mathUtil = new ChcUtils.MathUtil();
@@ -86,6 +173,15 @@
     var arrayUtil = new ChcUtils.ArrayUtil();
     var formUtil = new ChcUtils.FormUtil();
     var osUtil = new ChcUtils.OsUtil();
+    var vconsole=new VConsole();
+    
+    var a='abcde';
+	var b='cde';
+	var c='cdh';
+	console.log(stringUtil.isContainStr(a,b));
+	console.log(stringUtil.isContainStr(b,c));
+	
+	osUtil.preventTouch('myScroller');
 
     var style1 = '\
                 #qcodeWrapper {\
@@ -117,7 +213,7 @@
             ';
     var options = {style: style1};
 
-    osUtil.pcQRCode('http://10.145.90.1/audiNews', null, options);
+    //osUtil.pcQRCode('http://10.145.90.1/audiNews', null, options);
 
     function getMath() {
         var dis = mathUtil.getDistance({x: 10, y: 10}, {x: 100, y: 200});

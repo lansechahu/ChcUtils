@@ -229,15 +229,15 @@ console.log(dis);
      * @returns {string}
 <br>
 
-* **formatTime(date)**<br>
+* **formatDate(fmt,date)**<br>
      * 获取格式化的日期
-     * @param date [date] 要处理的日期
-     * @param __icon [string] 日期分隔符，如：/ -
-     * @returns {string}
+     * @param fmt [string] 格式规范，如 "yyyy-MM-dd hh:mm"
+	 * @param date [date] 要处理的日期
+	 * @returns {string}
      * 例：
      ```
      var mydate = new Date();
-     var str = stringUtil.formatTime(mydate);  2018/12/14 17:45:25
+     var str = stringUtil.formatDate("yyyy-MM-dd hh:mm",mydate);  2018/12/14 17:45
      ```
 <br>
 
@@ -254,6 +254,32 @@ console.log(dis);
      var test = stringUtil.getTimeDis("2019-04-01 04:00:50", "2019-04-05 04:01:00",true,3,3);
      console.log('disTime:' + test);  //disTime:004:00:00:010
      ```
+<br>
+
+* **isContainStr(_str1, _str2)**<br>
+     * @param _str1 [string] 源字符串
+	 * @param _str2 [string] 被寻找的字符串
+	 * @returns {Boolean}
+     * 例：
+     ```
+     var a='abcde';
+	 var b='cde';
+	 var c='cdh';
+	 console.log(stringUtil.isContainStr(a,b)); //true
+	 console.log(stringUtil.isContainStr(b,c)); //false
+     ```
+<br>
+
+* **utf16toEntities(str)**<br>
+     * 带表情的字符串转码，转码后就可以无障碍的存入数据库了
+	 * @param str [string] 源字符串
+	 * @returns {String}
+<br>
+
+* **entitiestoUtf16(str)**<br>
+     * 带表情的字符串解码，从数据库取出字符串后解码后就可以正常显示的前端了
+	 * @param str [string] 源字符串
+	 * @returns {String}
 <br>
 
 ### * **ArrayUtil**
@@ -359,6 +385,47 @@ console.log(dis);
      ```
 <br>
 
+* **delArr(arr, obj, type)**<br>
+     * 删除数组中指定的对象
+	 * @param arr [array] 要处理的数组
+	 * @param obj [string | number | object] 要删除的对象
+	 * @param type [number] 删除方式：0-所有    1-第一个    2-最后一个，默认0
+     * @returns [array]
+     ```
+<br>
+
+* **changeBetween(__arr, __index1, __index2)**<br>
+     * 交换数组中两个元素的位置
+	 * @param __arr [array] 要处理的数组
+	 * @param __index1 要交换的元素1号的索引号
+	 * @param __index2 要交换的元素2号的索引号
+	 * @returns [array]
+     ```
+<br>
+
+* **changeFirst(__arr, __index)**<br>
+     * 将某一个数组元素移到第一个
+	 * @param __arr [array] 要处理的数组
+	 * @param __index 提到第一个的元素的索引号
+	 * @returns [array]
+     ```
+<br>
+
+* **changeLast(__arr, __index)**<br>
+     * 将某一个数组元素移到最后一个
+	 * @param __arr [array] 要处理的数组
+	 * @param __index 提到最后一个的元素的索引号
+	 * @returns [array]
+     ```
+<br>
+
+* **delEmpty(__arr)**<br>
+     * 删除数组中的空值
+	 * @param __arr [array] 要处理的数组
+	 * @returns [array]
+     ```
+<br>
+
 ### * **FormUtil**
 
 * **inputEmpty(str)**<br>
@@ -436,6 +503,11 @@ console.log(dis);
      * 获取URL中的参数
      * @param name [string] 参数名称
      * @returns {*}
+<br>
+
+* **preventTouch(class)**<br>
+     * 阻止移动端下拉滑动的效果,并排除指定类,指定的类scroll效果保留
+     * @param class [string] 指定排除的类名,默认为'myScroller'
 <br>
 
 ### * ObjUtil
