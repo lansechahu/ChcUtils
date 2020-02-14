@@ -3,7 +3,7 @@ import StringUtil from './StringUtil';
 import ArrayUtil from './ArrayUtil';
 import FormUtil from './FormUtil';
 import OsUtil from './OsUtil';
-import ObjUtil from './OsUtil';
+import ObjUtil from './ObjUtil';
 
 export {
     MathUtil,

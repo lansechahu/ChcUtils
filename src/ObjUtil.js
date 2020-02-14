@@ -15,8 +15,8 @@ export default class ObjUtil {
 	        newObj = [];
 	    }
 	    for (var key in __obj) {
-	        var val = obj[key];
-	        newObj[key] = typeof val === 'object' ? cloneObj(val) : val;
+	        var val = __obj[key];
+	        newObj[key] = typeof val === 'object' ? this.cloneObj(val) : val;
 	    }
 	    return newObj;
     }
