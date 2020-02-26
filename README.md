@@ -282,6 +282,13 @@ console.log(dis);
 	 * @returns {String}
 <br>
 
+* **beautySub(str, len)**<br>
+     * 字符串超出多少之后加省略号，包含汉字
+	 * @param str [string] 源字符串
+	 * @param len [int] 需要显示多少个汉字，两个英文字母相当于一个汉字。
+	 * @returns {String}
+<br>
+
 ### * **ArrayUtil**
 
 * **shuffle(__arr)**<br>
