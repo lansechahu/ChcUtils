@@ -469,6 +469,10 @@ console.log(dis);
      *  return [array] 返回一个数组，数组元素与源数组一样，多了一个属性judge，为true时是通过，为false时是有问题
 <br>
 
+* **inputHandler()**<br>
+     * 解决IOS端软键盘将页面顶起的bug
+<br>
+
 ### * OsUtil
 
 * **pcQRCode(__url, __tip)**<br>
