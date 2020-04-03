@@ -413,7 +413,7 @@ export default class StringUtil {
 	 */
 	entitiestoUtf16(str) {
 		// 检测出形如&#12345;形式的字符串
-		var strObj = utf16toEntities(str);
+		var strObj = this.utf16toEntities(str);
 		var patt = /&#\d+;/g;
 		var H, L, code;
 		var arr = strObj.match(patt) || [];
