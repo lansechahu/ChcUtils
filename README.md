@@ -510,9 +510,10 @@ console.log(dis);
      * @param name [string] 要删除的cookie名称
 <br>
 
-* **getQueryString(name)**<br>
+* **getQueryString(name,encode)**<br>
      * 获取URL中的参数
      * @param name [string] 参数名称
+     * @param encode [boolean] 是否转码,true为转码,解决中文乱码问题，接收后用decodeURI解码
      * @returns {*}
 <br>
 

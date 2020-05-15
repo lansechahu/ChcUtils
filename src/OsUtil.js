@@ -182,11 +182,19 @@ export default class OsUtil {
 	/**
 	 * 获取URL中的参数
 	 * @param name [string] 参数名称
+	 * @param encode [boolean] 是否转码,true为转码,解决中文乱码问题
 	 * @returns {*}
 	 */
-	getQueryString(name) {
+	getQueryString(name, encode) {
+		var _encode = encode || false; //是否转码,默认为否
 		var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-		var r = window.location.search.substr(1).match(reg);
+		var _search = '';
+		if(_encode == false) {
+			_search = window.location.search;
+		} else {
+			_search = encodeURI(window.location.search);
+		}
+		var r = _search.substr(1).match(reg);
 		if(r != null) {
 			return unescape(r[2]);
 		}

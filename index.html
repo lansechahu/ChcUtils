@@ -1,192 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="target-densitydpi=device-dpi,width=750">
-    <title>Demo</title>
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="vconsole.min.js"></script>
-    <script src="build/ChcUtils.min.js"></script>
 
-    <style>
-    	body,html{
-    		width: 100%;
-    		height: 100%;
-    		overflow: hidden;
-    	}
-        .row {
-            display: flex;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750">
+		<title>Demo</title>
+		<script src="jquery-3.3.1.min.js"></script>
+		<script src="vconsole.min.js"></script>
+		<script src="build/ChcUtils.min.js"></script>
 
-        .txt {
-            margin-left: 20px;
-        }
+		<style>
+			body,
+			html {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.row {
+				display: flex;
+			}
+			
+			.txt {
+				margin-left: 20px;
+			}
+			
+			#ball {
+				position: fixed;
+				width: 50px;
+				height: 50px;
+				top: 100px;
+				left: 100px;
+				background: #000;
+			}
+			
+			.scroller,
+			.scroller2 {
+				width: 100%;
+				height: 200px;
+				overflow: hidden;
+				overflow-y: scroll;
+			}
+			
+			.box {
+				width: 100%;
+				height: auto;
+				background: yellow;
+			}
+		</style>
+	</head>
 
-        #ball {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            top: 100px;
-            left: 100px;
-            background: #000;
-        }
-        
-        .scroller,.scroller2{
-        	width: 100%;
-        	height: 200px;
-        	overflow: hidden;
-        	overflow-y: scroll;
-        }
-        
-        .box{
-        	width: 100%;
-        	height: auto;
-        	background: yellow;
-        }
-    </style>
-</head>
-<body>
+	<body>
 
-<div class="row">
-    <button onclick="getMath()">MathUtil</button>
-    <div id="mathTxt" class="txt"></div>
-</div>
+		<div class="row">
+			<button onclick="getMath()">MathUtil</button>
+			<div id="mathTxt" class="txt"></div>
+		</div>
 
-<button onclick="ballmove()">画圆</button>
+		<button onclick="ballmove()">画圆</button>
 
-<div class="row">
-    <button onclick="isEmpty()">判断是否为空字符</button>
-    <input id="input_txt" class="txt"/>
-</div>
+		<div class="row">
+			<button onclick="isEmpty()">判断是否为空字符</button>
+			<input id="input_txt" class="txt" />
+		</div>
 
-<div class="row">
-    <button onclick="getArr()">打乱数组</button>
-    <input id="input_num" class="txt"/>
-    <div id="arrTxt" class="txt"></div>
-</div>
+		<div class="row">
+			<button onclick="getArr()">打乱数组</button>
+			<input id="input_num" class="txt" />
+			<div id="arrTxt" class="txt"></div>
+		</div>
 
-<div class="row">
-    <button onclick="inputEmpty()">判断输入框是否为空字符</button>
-    <input id="input_txt2" class="txt"/>
-</div>
+		<div class="row">
+			<button onclick="inputEmpty()">判断输入框是否为空字符</button>
+			<input id="input_txt2" class="txt" />
+		</div>
 
-<button onclick="subForm()">判断表单项</button>
+		<button onclick="subForm()">判断表单项</button>
 
-<div class="row">
-    <button onclick="ispc()">判断是否是pc端</button>
-    <div id="pcTxt" class="txt"></div>
-</div>
+		<div class="row">
+			<button onclick="ispc()">判断是否是pc端</button>
+			<div id="pcTxt" class="txt"></div>
+		</div>
 
-<div class="row">
-    <button onclick="getSys()">获取终端类型</button>
-</div>
+		<div class="row">
+			<button onclick="getSys()">获取终端类型</button>
+		</div>
 
-<div class="row">
-    <input id="input_cookie" class="txt" placeholder="名称"/>
-    <input id="input_value" class="txt" placeholder="值"/>
-    <button onclick="saveCookie()">存储cookie</button>
-    <button onclick="getCookie()">获取cookie</button>
-    <button onclick="delCookie()">删除cookie</button>
-    <div id="cookieTxt" class="txt"></div>
-</div>
+		<div class="row">
+			<input id="input_cookie" class="txt" placeholder="名称" />
+			<input id="input_value" class="txt" placeholder="值" />
+			<button onclick="saveCookie()">存储cookie</button>
+			<button onclick="getCookie()">获取cookie</button>
+			<button onclick="delCookie()">删除cookie</button>
+			<div id="cookieTxt" class="txt"></div>
+		</div>
 
-<div id="ball"></div>
+		<div id="ball"></div>
 
-<div class="row">
-    <button onclick="clone()">复制对象</button>
-</div>
+		<div class="row">
+			<button onclick="clone()">复制对象</button>
+		</div>
 
-<div class="row">
-    <button onclick="getTime()">时间差</button>
-</div>
+		<div class="row">
+			<button onclick="getTime()">时间差</button>
+		</div>
 
-<div class="scroller myScroller">
-	<div class="box">
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-	</div>
-</div>
+		<div class="scroller myScroller">
+			<div class="box">
+				dfadfasdf<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br />
+			</div>
+		</div>
 
-<div class="scroller2 myScroller">
-	<div class="box">
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-		dfadfasdf<br />
-	</div>
-</div>
+		<div class="scroller2 myScroller">
+			<div class="box">
+				dfadfasdf<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br /> dfadfasdf
+				<br />
+			</div>
+		</div>
 
+		<script>
+			var mathUtil = new ChcUtils.MathUtil();
+			var stringUtil = new ChcUtils.StringUtil();
+			var arrayUtil = new ChcUtils.ArrayUtil();
+			var formUtil = new ChcUtils.FormUtil();
+			var osUtil = new ChcUtils.OsUtil();
+			var vconsole = new VConsole();
 
-<script>
-    var mathUtil = new ChcUtils.MathUtil();
-    var stringUtil = new ChcUtils.StringUtil();
-    var arrayUtil = new ChcUtils.ArrayUtil();
-    var formUtil = new ChcUtils.FormUtil();
-    var osUtil = new ChcUtils.OsUtil();
-    var vconsole=new VConsole();
-    
-    var a='abcde';
-	var b='cde';
-	var c='cdh';
-	console.log(stringUtil.isContainStr(a,b));
-	console.log(stringUtil.isContainStr(b,c));
-	
-	var _text='abcdefghijklmnopqrstuvwxyz';
-	console.log(stringUtil.beautySub(_text,5));
-	
-	osUtil.preventTouch('myScroller');
+			var testOS = osUtil.getQueryString('test',true);
+			console.log(decodeURI(testOS));
 
-    var style1 = '\
+			var a = 'abcde';
+			var b = 'cde';
+			var c = 'cdh';
+			console.log(stringUtil.isContainStr(a, b));
+			console.log(stringUtil.isContainStr(b, c));
+
+			var _text = 'abcdefghijklmnopqrstuvwxyz';
+			console.log(stringUtil.beautySub(_text, 5));
+
+			osUtil.preventTouch('myScroller');
+
+			var style1 = '\
                 #qcodeWrapper {\
                     width: 100%;\
                     height: 100%;\
@@ -214,114 +221,146 @@
                     color: white;\
                 }\
             ';
-    var options = {style: style1};
+			var options = {
+				style: style1
+			};
 
-    //osUtil.pcQRCode('http://10.145.90.1/audiNews', null, options);
+			//osUtil.pcQRCode('http://10.145.90.1/audiNews', null, options);
 
-    function getMath() {
-        var dis = mathUtil.getDistance({x: 10, y: 10}, {x: 100, y: 200});
-        document.getElementById('mathTxt').innerHTML = dis;
+			function getMath() {
+				var dis = mathUtil.getDistance({
+					x: 10,
+					y: 10
+				}, {
+					x: 100,
+					y: 200
+				});
+				document.getElementById('mathTxt').innerHTML = dis;
 
-        var str = mathUtil.getData('d2');
-        console.log(str);
-    }
+				var str = mathUtil.getData('d2');
+				console.log(str);
+			}
 
-    function ballmove() {
-        var angle = 0;
+			function ballmove() {
+				var angle = 0;
 
-        setInterval(function () {
-            var pos = mathUtil.getCirclePosition(angle, {x: 200, y: 100}, {x: 200, y: 200});
-            var ball = document.getElementById('ball');
-            ball.style.top = pos.y + 'px';
-            ball.style.left = pos.x + 'px';
-            angle++;
-        }, 10);
-    }
+				setInterval(function() {
+					var pos = mathUtil.getCirclePosition(angle, {
+						x: 200,
+						y: 100
+					}, {
+						x: 200,
+						y: 200
+					});
+					var ball = document.getElementById('ball');
+					ball.style.top = pos.y + 'px';
+					ball.style.left = pos.x + 'px';
+					angle++;
+				}, 10);
+			}
 
-    function isEmpty() {
-        var str = document.getElementById('input_txt').value;
-        var __isEmpty = stringUtil.isEmpty(str) ? stringUtil.isEmpty(str) + " 是空的" : stringUtil.isEmpty(str) + " 非空的";
+			function isEmpty() {
+				var str = document.getElementById('input_txt').value;
+				var __isEmpty = stringUtil.isEmpty(str) ? stringUtil.isEmpty(str) + " 是空的" : stringUtil.isEmpty(str) + " 非空的";
 
-        alert(__isEmpty);
-    }
+				alert(__isEmpty);
+			}
 
-    function getArr() {
-        var str = document.getElementById('input_num').value;
-        var arr = str.split(',');
-        var arr2 = arrayUtil.shuffle(arr);
-        document.getElementById('arrTxt').innerHTML = arr2;
-    }
+			function getArr() {
+				var str = document.getElementById('input_num').value;
+				var arr = str.split(',');
+				var arr2 = arrayUtil.shuffle(arr);
+				document.getElementById('arrTxt').innerHTML = arr2;
+			}
 
-    function inputEmpty() {
-        var str = document.getElementById('input_txt2').value;
-        var __isEmpty = formUtil.inputEmpty(str) ? formUtil.inputEmpty(str) + " 非空的" : formUtil.inputEmpty(str) + " 是空的";
+			function inputEmpty() {
+				var str = document.getElementById('input_txt2').value;
+				var __isEmpty = formUtil.inputEmpty(str) ? formUtil.inputEmpty(str) + " 非空的" : formUtil.inputEmpty(str) + " 是空的";
 
-        alert(__isEmpty);
-    }
+				alert(__isEmpty);
+			}
 
-    function subForm() {
-        var arr = [];
+			function subForm() {
+				var arr = [];
 
-        var obj1 = {value: '姓  名', type: 1};
-        var obj2 = {value: '182015  91880', type: 2};
-        var obj3 = {value: 'aaa@126.com', type: 3};
-        var obj4 = {value: '120102155585858585', type: 4};
-        var obj5 = {value: '职位', type: 1};
-        arr = [
-            obj1, obj2, obj3, obj4, obj5
-        ];
+				var obj1 = {
+					value: '姓  名',
+					type: 1
+				};
+				var obj2 = {
+					value: '182015  91880',
+					type: 2
+				};
+				var obj3 = {
+					value: 'aaa@126.com',
+					type: 3
+				};
+				var obj4 = {
+					value: '120102155585858585',
+					type: 4
+				};
+				var obj5 = {
+					value: '职位',
+					type: 1
+				};
+				arr = [
+					obj1, obj2, obj3, obj4, obj5
+				];
 
-        var __arr = formUtil.judgeForm(arr);
-        console.log(__arr);
-    }
+				var __arr = formUtil.judgeForm(arr);
+				console.log(__arr);
+			}
 
-    function ispc() {
-        let pp = osUtil.isPc();
-        document.getElementById('pcTxt').innerHTML = pp;
-    }
+			function ispc() {
+				let pp = osUtil.isPc();
+				document.getElementById('pcTxt').innerHTML = pp;
+			}
 
-    function getSys() {
-        let obj = osUtil.getSysInfo();
-        console.log(obj);
-    }
+			function getSys() {
+				let obj = osUtil.getSysInfo();
+				console.log(obj);
+			}
 
-    function saveCookie() {
-        var str = document.getElementById('input_cookie').value;
-        var value = document.getElementById('input_value').value;
-        osUtil.setCookie(str, value);
-    }
+			function saveCookie() {
+				var str = document.getElementById('input_cookie').value;
+				var value = document.getElementById('input_value').value;
+				osUtil.setCookie(str, value);
+			}
 
-    function getCookie() {
-        var str = document.getElementById('input_cookie').value;
-        document.getElementById('cookieTxt').innerHTML = osUtil.getCookie(str);
-    }
+			function getCookie() {
+				var str = document.getElementById('input_cookie').value;
+				document.getElementById('cookieTxt').innerHTML = osUtil.getCookie(str);
+			}
 
-    function delCookie() {
-        var str = document.getElementById('input_cookie').value;
-        osUtil.delCookie(str);
-    }
+			function delCookie() {
+				var str = document.getElementById('input_cookie').value;
+				osUtil.delCookie(str);
+			}
 
-    function clone() {
-        var obj = {a: 11, b: 22};
-        var obj2 = osUtil.cloneObj(obj);
-        obj2.a = 23;
+			function clone() {
+				var obj = {
+					a: 11,
+					b: 22
+				};
+				var obj2 = osUtil.cloneObj(obj);
+				obj2.a = 23;
 
-        console.log(obj);
-        console.log(obj2);
-    }
+				console.log(obj);
+				console.log(obj2);
+			}
 
-    function getTime() {
-        var data = {
-            "thisTime": "2019-04-01 04:00:50",
-            "targetTime": "2019-04-05 04:01:00"
-        };
+			function getTime() {
+				var data = {
+					"thisTime": "2019-04-01 04:00:50",
+					"targetTime": "2019-04-05 04:01:00"
+				};
 
-        var test = stringUtil.getTimeDis(data.thisTime, data.targetTime, true, 3, 3);
-        console.log('thisTime:' + data.thisTime);
-        console.log('targetTime:' + data.targetTime);
-        console.log('disTime:' + test);
-    }
+				var test = stringUtil.getTimeDis(data.thisTime, data.targetTime, true, 3, 3);
+				console.log('thisTime:' + data.thisTime);
+				console.log('targetTime:' + data.targetTime);
+				console.log('disTime:' + test);
+			}
+		</script>
+	</body>
 
-</script>
-</body>
 </html>
