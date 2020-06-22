@@ -289,6 +289,14 @@ console.log(dis);
 	 * @returns {String}
 <br>
 
+* **stringFlag(str, flag, classname)**<br>
+     * 在字符串中找到指定字符串，并给它加上指定的样式
+	 * @param str [string] 源字符串
+	 * @param flag [string] 要标记的字符串
+	 * @param classname [string] 要加的样式
+	 * @returns {String}
+<br>
+
 ### * **ArrayUtil**
 
 * **shuffle(__arr)**<br>
@@ -520,6 +528,10 @@ console.log(dis);
 * **preventTouch(class)**<br>
      * 阻止移动端下拉滑动的效果,并排除指定类,指定的类scroll效果保留
      * @param class [string] 指定排除的类名,默认为'myScroller'
+<br>
+
+* **isAn(class)**<br>
+     * 判断是否是安卓系统
 <br>
 
 ### * ObjUtil

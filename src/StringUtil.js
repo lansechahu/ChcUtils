@@ -444,4 +444,17 @@ export default class StringUtil {
 			realen = slice.length * 2 - chineseCharNum;
 		return str.substr(0, realen) + (realen < str.length ? "..." : "");
 	}
+
+	/**
+	 * 在字符串中找到指定字符串，并给它加上指定的样式
+	 * @param str [string] 源字符串
+	 * @param flag [string] 要标记的字符串
+	 * @param classname [string] 要加的样式
+	 * @returns {String}
+	 */
+	stringFlag(str, flag, classname) {
+		var reg = new RegExp("(" + flag + ")", "g");
+		var newstr = str.replace(reg, "<span class='" + classname + "'>$1</span>");
+		return newstr;
+	}
 }

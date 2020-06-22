@@ -47,6 +47,11 @@
 				height: auto;
 				background: yellow;
 			}
+			
+			.red {
+				color: blue;
+				font-weight: bold;
+			}
 		</style>
 	</head>
 
@@ -171,6 +176,7 @@
 			</div>
 		</div>
 
+		<div id="strFlag"></div>
 		<script>
 			var mathUtil = new ChcUtils.MathUtil();
 			var stringUtil = new ChcUtils.StringUtil();
@@ -179,7 +185,13 @@
 			var osUtil = new ChcUtils.OsUtil();
 			var vconsole = new VConsole();
 
-			var testOS = osUtil.getQueryString('test',true);
+			var str = "今天大家都来过";
+			var flag = "大家";
+			var str2 = stringUtil.stringFlag(str,flag,'red');
+			document.getElementById('strFlag').innerHTML = str2;
+			
+
+			var testOS = osUtil.getQueryString('test', true);
 			console.log(decodeURI(testOS));
 
 			var a = 'abcde';
