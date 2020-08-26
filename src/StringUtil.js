@@ -82,19 +82,30 @@ export default class StringUtil {
 
 	/**
 	 * 随机A-Z|a-z|0-9 中的随机组合
-	 * @param len {number} 随机组合的长度
+	 * @param randomLen {Boolean} 是否随机产生
+	 * @param min {number} 最小长度
+	 * @param max {number} 最大长度
 	 * @returns {string}
 	 */
-	randomString(len) {
-		len = len || 32;
-		let $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890',
-			maxPos = $chars.length,
-			i = 0,
-			pwd = '';
-		for(i; i < len; i++) {
-			pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+	randomString(randomLen, min, max) {
+		var str = "",
+			range = min,
+			arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+				'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+				'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+				'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+				'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' '
+			];
+		// 随机产生
+		if(randomLen) {
+			range = Math.round(Math.random() * (max - min)) + min;
 		}
-		return pwd;
+		for(var i = 0; i < range; i++) {
+			pos = Math.round(Math.random() * (arr.length - 1));
+			str += arr[pos];
+		}
+		return str;
 	}
 
 	/**

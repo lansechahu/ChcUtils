@@ -174,8 +174,10 @@ console.log(dis);
 
 * **randomString(len)**<br>
      * 随机A-Z|a-z|0-9 中的随机组合
-     * @param len {number} 随机组合的长度
-     * @returns {string}
+	 * @param randomLen {Boolean} 是否随机产生
+	 * @param min {number} 最小长度
+	 * @param max {number} 最大长度
+	 * @returns {string}
 <br>
 
 * **strReplace(str, a, b, mm)**<br>
