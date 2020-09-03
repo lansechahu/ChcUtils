@@ -102,7 +102,7 @@ export default class StringUtil {
 			range = Math.round(Math.random() * (max - min)) + min;
 		}
 		for(var i = 0; i < range; i++) {
-			pos = Math.round(Math.random() * (arr.length - 1));
+			var pos = Math.round(Math.random() * (arr.length - 1));
 			str += arr[pos];
 		}
 		return str;
