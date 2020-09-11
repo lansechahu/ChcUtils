@@ -297,6 +297,50 @@ export default class StringUtil {
 	}
 
 	/**
+	 * 格式化的日期字符串转日期型数据，如"yyyy-MM-dd hh:mm"
+	 * @param str [string] 格式化的日期字符
+	 * @param yy [string] 年月日的分隔符，默认是"-"
+	 * @param tt [string] 时分秒的分隔符，默认是":"
+	 * @returns {date}
+	 * 例：var _date = stringToDate("2019-04-01 6:05:10"); Mon Apr 01 2019 06:05:10 GMT+0800 (中国标准时间)
+	 *     var _date = stringToDate("2019/04/01 7","/");  Mon Apr 01 2019 07:00:00 GMT+0800 (中国标准时间)
+	 */
+	stringToDate(str, yy = "-", tt = ":") {
+
+		var year = "";
+		var month = "";
+		var day = "";
+		var hour = "";
+		var minute = "";
+		var second = "";
+
+		var tempStrs = str.split(" ");
+
+		var dateStrs = tempStrs[0].split(yy);
+
+		year = parseInt(dateStrs[0], 10);
+
+		month = parseInt(dateStrs[1], 10) - 1;
+
+		day = parseInt(dateStrs[2], 10);
+
+		if(tempStrs[1]) {
+			var timeStrs = tempStrs[1].split(tt);
+
+			hour = parseInt(timeStrs[0], 10) || "";
+
+			minute = parseInt(timeStrs[1], 10) || "";
+
+			second = parseInt(timeStrs[2], 10) || "";
+		}
+
+		var date = new Date(year, month, day, hour, minute, second);
+
+		return date;
+
+	}
+
+	/**
 	 * 返回两个时间点的时间差
 	 * @param thisTime [string] 当前日期  格式：2019-04-01 00:00:00
 	 * @param targetTime [string] 目标日期 格式：2019-04-01 00:00:00

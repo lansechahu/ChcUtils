@@ -183,13 +183,13 @@
 			var arrayUtil = new ChcUtils.ArrayUtil();
 			var formUtil = new ChcUtils.FormUtil();
 			var osUtil = new ChcUtils.OsUtil();
+			var domUtil = new ChcUtils.DomUtil();
 			var vconsole = new VConsole();
 
 			var str = "今天大家都来过";
 			var flag = "大家";
-			var str2 = stringUtil.stringFlag(str,flag,'red');
+			var str2 = stringUtil.stringFlag(str, flag, 'red');
 			document.getElementById('strFlag').innerHTML = str2;
-			
 
 			var testOS = osUtil.getQueryString('test', true);
 			console.log(decodeURI(testOS));
@@ -372,6 +372,14 @@
 				console.log('targetTime:' + data.targetTime);
 				console.log('disTime:' + test);
 			}
+
+			var _date = stringUtil.stringToDate("2019/04/01 7", "/");
+			console.log(_date);
+
+			$('.scroller').scroll(function() {
+				var isBottom = domUtil.scrollBottom($('.scroller'));
+				console.log('是否到底了：：：：：'+isBottom);
+			});
 		</script>
 	</body>
 

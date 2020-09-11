@@ -36,6 +36,8 @@ console.log(dis);
 [OsUtil](#-OsUtil)
 <br>
 [ObjUtil](#-ObjUtil)
+<br>
+[DomUtil](#-DomUtil)
 
 ### * **MathUtil**
 * **isNumber(__obj)**<br>
@@ -240,6 +242,19 @@ console.log(dis);
      ```
      var mydate = new Date();
      var str = stringUtil.formatDate("yyyy-MM-dd hh:mm",mydate);  2018/12/14 17:45
+     ```
+<br>
+
+* **stringToDate(str, yy, tt)**<br>
+     * 格式化的日期字符串转日期型数据，如"yyyy-MM-dd hh:mm"
+	 * @param str [string] 格式化的日期字符
+	 * @param yy [string] 年月日的分隔符，默认是"-"
+	 * @param tt [string] 时分秒的分隔符，默认是":"
+	 * @returns {date}
+     * 例：
+     ```
+     var _date = stringToDate("2019-04-01 6:05:10"); Mon Apr 01 2019 06:05:10 GMT+0800 (中国标准时间)
+     var _date = stringToDate("2019/04/01 7","/");  Mon Apr 01 2019 07:00:00 GMT+0800 (中国标准时间)
      ```
 <br>
 
@@ -542,4 +557,16 @@ console.log(dis);
      * 深复制对象
      * @param {Object} [__obj] 要被复制的对象
      * @returns {Object} 返回复制出来的新对象
+<br>
+
+### * **DomUtil**
+
+* **scrollBottom(__target)**<br>
+     * 判断div滚动条是否达到底部
+	 * @param __target [$dom] 靠jq获取的对象dom节点，要检测这个节点是滚动条，如$('.aa')
+	 * @returns {boolean} 返回true是滚动到底部了，false没滚到底部
+<br>
+
+* **inputKeyboard()**<br>
+     * 键盘顶起bug解决
 <br>
